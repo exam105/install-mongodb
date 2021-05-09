@@ -1,0 +1,24 @@
+---
+# tasks file for mongoDB setup
+
+- hosts: ec2
+  become: true
+  
+  tasks:
+    - name: Install aptitude using apt
+      apt: 
+        name: aptitude 
+        state: latest 
+        update_cache: yes  
+    
+    - name: install mongoDB
+      apt: 
+        name: mongodb=4.4
+        state: present
+        update_cache: yes
+
+    - name: Ensure mongodb is running and and enabled to start automatically on reboots
+      systemd:
+        name: mongodb
+        enabled: yes
+        state: started
