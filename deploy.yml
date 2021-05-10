@@ -11,19 +11,19 @@
         state: latest 
         update_cache: yes 
     
-    - name: MongoDB - Import public key
+    - name: Import public key
       apt_key:
         keyserver: hkp://keyserver.ubuntu.com:80
         id: EA312927
     
-    - name: MongoDB - Add repository
+    - name: Add repository
       apt_repository:
         filename: '/etc/apt/sources.list.d/mongodb-org-4.4.list'
-        repo: 'deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/4.4 multiverse'
+        repo: 'deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.4 multiverse'
         state: present
         update_cache: yes
     
-    - name: install mongoDB
+    - name: Install mongoDB
       apt: 
         name: mongodb-org
         state: present
