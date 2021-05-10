@@ -13,7 +13,7 @@
     
     - name: install mongoDB
       apt: 
-        name: mongodb=4.4
+        name: mongodb=4.2
         state: present
         update_cache: yes
 
